@@ -1,24 +1,22 @@
 
+This project demonstrates how to provision a scalable 3-Tier Architecture on AWS using Terraform. The setup follows a modular approach, organizing infrastructure into separate layers: VPC, Web, App, Database, IAM, Security Group. This ensures better manageability, reusability, and security while deploying cloud resources. By the end, you will have a fully automated, infrastructure-as-code (IaC) solution for hosting applications on AWS.
 
-![image](https://github.com/user-attachments/assets/e2d366d8-6bda-4cf0-98ec-d9df69d1e72f)
+![image](https://github.com/user-attachments/assets/85a6bda8-c56e-42fa-9117-55e41db5c1d8)
+ ```
+## Architecture Overview:
+We will deploy a three-tier architecture consisting of the following:
+VPC (Core Layer): Contains public and private subnets.
+Public Subnets: Web servers(ASG) and NAT Gateway.
+Private Subnets: Application servers (EC2 instances) and Database (Amazon RDS).
+Load Balancer: ALB to distribute traffic.
+Security Groups: Restricted access at different layers
 
-```
-This project demonstrates how to provision a 3-Tier Architecture on AWS using Terraform. It includes a Public and Private subnet setup, EC2 instances, Internet Gateway, NAT Gateway, Security Groups, and two Application Load Balancers (ALBs).
-
-
-## Setup Instructions
-1. Clone the reposiory: git clone
-2. Initialize Terraform: terraform init
-3. Plan the Deployment: terraform plan
-4. Apply Changes: terraform apply
-
-## Key Components
-Web:      	        EC2 + Auto Scaling Group + Public ALB
-App:      	        EC2 + Auto Scaling Group + Private ALB
-DB:       	        Amazon RDS (MySQL/PostgreSQL)
-Network:   	        VPC, Subnets (Public/Private), NAT Gateway, Route Tables
-Security: 	        Security Groups, IAM Roles
-Terraform Backend:      S3 Remote State + DynamoDB Locking
+## Deployment steps:
+1️⃣ Initialize Terraform: terraform init
+2️⃣ Plan the Deployment: terraform plan
+3️⃣ Apply the Configuration: terraform apply -auto-approve
+4️⃣ Verify the Deployment: Check AWS Console for created resources. Validate EC2 instances, ALB, and RDS.
+5️⃣ Destroy Infrastructure (Optional): terraform destroy -auto-approve
 
 ## Features
 ✅ Infrastructure-as-Code using Terraform
@@ -28,6 +26,4 @@ Terraform Backend:      S3 Remote State + DynamoDB Locking
 ✅ S3 + DynamoDB remote backend for secure and team-friendly Terraform state management
 ✅ Modular design using custom Terraform modules
 
-
-
-![Uploading image.png…]()
+This foundation supports seamless scaling, cost optimization, and compliance readiness, providing a robust blueprint for modern cloud-native applications. Future enhancements like HTTPS, WAF, or secrets management can further strengthen production readiness.
